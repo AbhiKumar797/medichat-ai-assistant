@@ -4,8 +4,8 @@ import "./ChatPage.css"; // Import the CSS file
 import { googleLogout } from "@react-oauth/google";
 
 
-const backendUrl = "https://chatbot-vg3m.onrender.com";
-// const backendUrl = "http://localhost:3001";
+// const backendUrl = "https://medichat-ai-assistant.onrender.com";
+const backendUrl = "http://localhost:3001";
 
 const ChatPage = () => {
     const [messages, setMessages] = useState([]);
@@ -27,16 +27,17 @@ const ChatPage = () => {
             }
     
             const data = await response.json();
-            console.log("API Response:", data.conversations[0].messages);
-    
-            // Ensure messages exist and are in the correct format
-            if (Array.isArray(data.conversations[0].messages)) {
+            
+            // Check if conversations exist and have messages
+            if (data.conversations && data.conversations.length > 0 && Array.isArray(data.conversations[0].messages)) {
+                console.log("API Response:", data.conversations[0].messages);
                 setMessages(data.conversations[0].messages.map(msg => ({
                     text: msg.text,
                     sender: msg.sender
                 })));
             } else {
-                console.error("Unexpected response format:", data);
+                console.log("No conversations found for the current user.");
+                setMessages([]);
             }
         } catch (error) {
             console.error("Error fetching conversations:", error);
@@ -130,15 +131,17 @@ const ChatPage = () => {
     }, [messages]);
     
     const formatBotMessage = (text) => {
-        // Match the structured response from AI
-        const match = text.match(/Disease:\s*(.*)\s*Medicine:\s*(.*)\s*Note:\s*(.*)/);
+        // Extract fields using separate regex patterns to handle newlines and spaces robustly
+        const diseaseMatch = text.match(/Disease:\s*(.*)/i);
+        const medicineMatch = text.match(/Medicine:\s*(.*)/i);
+        const noteMatch = text.match(/Note:\s*(.*)/i);
     
-        if (match) {
+        if (diseaseMatch && medicineMatch && noteMatch) {
             return (
                 <>
-                    <strong>🤖 Disease:</strong> {match[1]} <br />
-                    <strong>💊 Medicine:</strong> {match[2]} <br />
-                    <strong>📌 Note:</strong> {match[3]}
+                    <strong>🤖 Disease:</strong> {diseaseMatch[1].trim()} <br />
+                    <strong>💊 Medicine:</strong> {medicineMatch[1].trim()} <br />
+                    <strong>📌 Note:</strong> {noteMatch[1].trim()}
                 </>
             );
         }

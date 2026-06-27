@@ -3,7 +3,7 @@ import { ChatGroq } from '@langchain/groq';
 // Initialize the ChatGroq model
 const llm = new ChatGroq({
     apiKey: process.env.GROQ_API_KEY,
-    model: "llama3-8b-8192",
+    model: "llama-3.3-70b-versatile",
     temperature: 0.8,
     maxTokens: 200, // Increased for better responses
 });
@@ -31,12 +31,6 @@ const structuredLlm = llm.withStructuredOutput(MedicineRecommendation, { name: "
 // Define the personality prompt
 const prompt = `
 You are a helpful assistant that provides over-the-counter medicine recommendations based on common diseases or symptoms.
-Your response must be structured in this format:
-{
-  "disease": "<Name of the disease>",
-  "medicine": "<Recommended over-the-counter medicine>",
-  "note": "<Additional advice or cautionary note>"
-}
 Always include a note advising the user to consult a doctor for serious conditions.
 `;
 

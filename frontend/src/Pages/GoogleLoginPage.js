@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./GoogleLoginPage.css"; // Import the CSS file
 import {jwtDecode} from 'jwt-decode';
 
-const backendUrl = "https://chatbot-vg3m.onrender.com";
-// const backendUrl = "http://localhost:3001";
+// const backendUrl = "https://medichat-ai-assistant.onrender.com";
+const backendUrl = "http://localhost:3001";
 
 const GoogleLoginPage = () => {
     const navigate = useNavigate();

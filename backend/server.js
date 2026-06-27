@@ -11,7 +11,7 @@ const app = express();
 
 // ✅ Fix: CORS should explicitly allow Authorization header
 const corsOptions = {
-    origin: ["http://localhost:3000", "https://chat-bot-sigma-vert.vercel.app"],
+    origin: ["http://localhost:3000", "https://medichat-ai-assistant.vercel.app"],
     methods: "GET, POST, PUT, DELETE",
     credentials: true, // ✅ Allows cookies to be sent with requests
     allowedHeaders: "Content-Type, Authorization", // ✅ Allow Authorization header
