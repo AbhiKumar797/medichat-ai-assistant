@@ -5,8 +5,8 @@ MediChat is an intelligent full-stack medical consulting assistant that leverage
 ---
 
 ## 🔗 Live Links
-* **Live Web Application:** [Visit MediChat Live](https://medichat-ai-assistant.vercel.app) *(Update with your live URL)*
-* **Project Demo Video:** [Watch Demo on YouTube](https://youtube.com) *(Update with your YouTube video URL)*
+* **Live Web Application:** [Visit MediChat Live](https://medichat-ai-assistant.vercel.app) 
+* **Project Demo Video:** [Watch Demo on YouTube](https://youtube.com) 
 
 ---
 
