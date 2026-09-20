@@ -107,7 +107,3 @@ MediChat/
 ## 🛡️ Medical Disclaimer
 **MediChat is an AI-powered conversational assistant designed for informational and educational purposes only. It does not provide professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified physician or healthcare provider with any questions you may have regarding a medical condition.**
 
----
-
-## 📄 License
-This project is licensed under the ISC License.
